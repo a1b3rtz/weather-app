@@ -52,3 +52,27 @@ export const SubmitButton = styled.button`
     outline: none;
   }
 `
+
+export const ChangeLocation = styled.button`
+  width: 150px;
+  height: 50px;
+  margin: 50px 80px;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 5px 5px 50px rgba(0, 0, 255, 0.1);
+  background-color: #04FCCC;
+  cursor: pointer;
+  :hover {
+    background-color: #20D3AC;
+  }
+  :active {
+    background-color: #0D9D7C;
+    transition: all 0s ease-in-out;
+  }
+  :focus {
+    border: 1px solid #0D9D7C;
+    outline: none;
+  }
+`
