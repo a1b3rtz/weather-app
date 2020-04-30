@@ -12,21 +12,21 @@ import * as actionCreator from '../../store/actionCreators'
 
 class Search extends PureComponent {
   render() {
-    const { inputValue } = this.props
+    const { inputValue } = this.props;
 
     return (
       <SearchWrapper>
         <FormWrapper>
           <Input value={inputValue} onChange={this.props.handleInputChange} />
           <SubmitButton>Search</SubmitButton>
-          <ChangeLocation onClick={this.props.handleLocationData}>Use your location</ChangeLocation>
+          <ChangeLocation onClick={this.props.handleWeatherData}>Use your location</ChangeLocation>
         </FormWrapper>
       </SearchWrapper>
     )
   }
 
   componentDidMount() {
-    this.props.handleLocationData();
+    this.props.handleWeatherData();
   }
 }
 
@@ -43,8 +43,8 @@ const mapDispatchToProps = (dispatch) => ({
     const action = actionCreator.inputChange(e.target.value);
     dispatch(action);
   },
-  handleLocationData() {
-    const action = actionCreator.handleLocation();
+  handleWeatherData() {
+    const action = actionCreator.handleWeather();
     dispatch(action);
   }
 })

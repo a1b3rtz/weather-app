@@ -28,7 +28,6 @@ export const Date = styled.div`
 `
 
 export const WeatherIcon = styled.div`
-  background-color: red;
   width: 120px;
   height: 120px;
   margin: 0 auto;

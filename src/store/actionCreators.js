@@ -1,12 +1,13 @@
-import { CHANGE_INPUT, GET_LOCATION, WEATHER_APK_ID, GET_WEATHER } from './constant'
 import axios from 'axios';
+
+import { CHANGE_INPUT, GET_LOCATION, WEATHER_APK_ID, GET_WEATHER } from './constant'
 
 export const inputChange = (value) => ({
   type: CHANGE_INPUT,
   value
-})
+});
 
-export function handleLocation() {
+export function handleWeather() {
   return (dispatch) => {
     const geolocation = navigator.geolocation;
     geolocation.getCurrentPosition((position) => {
@@ -22,9 +23,13 @@ export function handleLocation() {
       ).then((res) => {
         dispatch({
           type: GET_WEATHER,
-          data: res.data
+          data: res.data,
+          temp: res.data.main.temp - 273.15,
+          location: res.data.name,
+          weather: res.data.weather[0].description,
+          icon: res.data.weather[0].icon
         });
-      })
+      });
     });
   };
-}
+};
