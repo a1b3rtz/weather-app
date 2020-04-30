@@ -15,8 +15,7 @@ export function handleLocation() {
               payload: {
                 lat: position.coords.latitude,
                 long: position.coords.longitude
-              },
-              status: 'getting location'
+              }
           });
       });
   };
