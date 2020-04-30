@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -10,48 +10,46 @@ import {
 } from './styles';
 import * as actionCreator from '../../store/actionCreators'
 
-class Search extends Component {
+class Search extends PureComponent {
   render() {
+    const { inputValue, lat, long } = this.props
+
     return (
       <SearchWrapper>
         <FormWrapper>
-          <Input value={this.props.inputValue} onChange={this.props.handleInputChange} />
+          <Input value={inputValue} onChange={this.props.handleInputChange} />
           <SubmitButton>Search</SubmitButton>
-          <ChangeLocation onClick={this.handleGetGeolocation.bind(this)}>Use your location</ChangeLocation>
+          <ChangeLocation onClick={this.props.handleLocationData}>Use your location</ChangeLocation>
+          <ChangeLocation onClick={() => this.props.handleWeatherData(lat, long)}>update weather</ChangeLocation>
         </FormWrapper>
       </SearchWrapper>
     )
   }
 
-  handleGetGeolocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.successCallback, this.errorCallback);
-    } else {
-      alert("Your browser does not support location service");
-    }
-  }
-
-  successCallback(position) {
-    console.log("got ya");
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    console.log("latitude：" + latitude + " longitude：" + longitude);
-  }
-
-  errorCallback(error) {
-    alert("Can't get your location");
+  componentDidMount() {
+    this.props.handleLocationData();
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    inputValue: state.inputValue
+    inputValue: state.get('inputValue'),
+    lat: state.get('latitude'),
+    long: state.get('longitude')
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   handleInputChange(e) {
     const action = actionCreator.inputChange(e.target.value);
+    dispatch(action);
+  },
+  handleLocationData() {
+    const action = actionCreator.handleLocation();
+    dispatch(action);
+  }, 
+  handleWeatherData(lat, long) {
+    const action = actionCreator.getLocalWeather(lat, long);
     dispatch(action);
   }
 })
