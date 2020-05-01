@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import * as _ from 'underscore';
 
 import {
   SearchWrapper,
@@ -13,19 +14,20 @@ import {
 import * as actionCreator from '../../store/actionCreators'
 
 class Search extends PureComponent {
+
   render() {
     const { inputValue, suggestions, handleInputChange, handleWeatherData, handleSelectLocation } = this.props;
-
+  
     return (
       <SearchWrapper>
         <FormWrapper>
           <Input value={inputValue} onChange={handleInputChange} />
-          <SubmitButton>Search</SubmitButton>
+          <SubmitButton>SEARCH</SubmitButton>
           <SuggestTable className={suggestions ? '' : 'hide'}>
             {
               suggestions ? 
-                suggestions.map((item) => {
-                  return (<tbody><Row 
+                suggestions.map((item, index) => {
+                  return (<tbody key={index}><Row
                             onClick={() => handleSelectLocation(item)}
                           ><td>
                             {item.label.slice(10)}
@@ -59,20 +61,26 @@ const mapDispatchToProps = (dispatch) => ({
     const input = e.target.value
     const action = actionCreator.inputChange(input);
     dispatch(action);
+
     const autoCompleteAction = actionCreator.autoComplete(input);
     dispatch(autoCompleteAction);
   },
+
   handleWeatherData() {
     const action = actionCreator.handleWeather();
     dispatch(action);
   },
+
   handleSelectLocation(item) {
     const countryCode = item.countryCode.slice(0, 2).toLowerCase();
     const postalCode = item.address.postalCode;
+
     const action = actionCreator.getSelectLocation(postalCode, countryCode);
     dispatch(action);
+    
     const clearInputAction = actionCreator.inputChange('');
     dispatch(clearInputAction);
+
     const clearSuggestionsAction = actionCreator.clearSuggestions();
     dispatch(clearSuggestionsAction);
   }

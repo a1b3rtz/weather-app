@@ -40,8 +40,4 @@ const mapStateToProps = (state) => ({
   icon: state.get('icon')
 })
 
-const mapDispatchToProps = (dispatch) => {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Display)
+export default connect(mapStateToProps, null)(Display)

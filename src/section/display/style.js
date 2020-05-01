@@ -5,7 +5,8 @@ export const DisplayWrapper = styled.div`
   width: 650px;
   float: right;
   border-radius: 0 10px 10px 0;
-  background-color: green;
+  background: url(https://source.unsplash.com/random/1200x900?sky) center center / cover no-repeat;
+  background-color: rgba(43, 36, 77, 0.5);
 `
 
 export const Title = styled.h1`
@@ -28,8 +29,8 @@ export const Date = styled.div`
 `
 
 export const WeatherIcon = styled.div`
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
   margin-top: 60px;
 `

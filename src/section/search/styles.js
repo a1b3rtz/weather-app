@@ -13,7 +13,7 @@ export const FormWrapper = styled.div`
 `
 
 export const Input = styled.input.attrs({
-  placeholder: 'city'
+  placeholder: 'city/post code'
 })`
   font-size: 17px;
   height: 40px;
@@ -30,10 +30,10 @@ export const Input = styled.input.attrs({
 `
 
 export const SubmitButton = styled.button`
-  margin-left: -30px;
-  height: 60px;
-  width: 60px;
-  border-radius: 30px;
+  margin-left: -35px;
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
   border: none;
   box-sizing: border-box;
   box-shadow: 5px 5px 50px rgba(0, 0, 255, 0.1);
@@ -63,6 +63,7 @@ export const ChangeLocation = styled.button`
   outline: none;
   box-shadow: 5px 5px 50px rgba(0, 0, 255, 0.1);
   background-color: #04FCCC;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
   :hover {
     background-color: #20D3AC;
@@ -80,8 +81,8 @@ export const ChangeLocation = styled.button`
 export const SuggestTable = styled.table`
   position: absolute;
   height: 40px;
-  width: 260px;
-  margin-top: -10px;
+  width: 255px;
+  margin-top: -17px;
   margin-left: 15px;
 
 `
