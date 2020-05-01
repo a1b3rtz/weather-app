@@ -1,13 +1,15 @@
 import { fromJS } from 'immutable';
 
-import { CHANGE_INPUT, GET_LOCATION, GET_WEATHER } from './constant';
+import { CHANGE_INPUT, GET_LOCATION, GET_WEATHER, GET_SUGGESTIONS, CLEAR_SUGGESTIONS } from './constant';
 
 const defaultState = fromJS({
   inputValue: '',
   location: 'melbourne',
   latitude: '',
   longitude: '',
-  data: []
+  data: [],
+  suggestion: [],
+  locationData: []
 })
 
 export default ((state = defaultState, action) => {
@@ -21,6 +23,12 @@ export default ((state = defaultState, action) => {
   }
   if(action.type === GET_WEATHER) {
     return state.set('data', action.data).set('temp', Math.round(action.temp)).set('location', action.location).set('weather', action.weather).set('icon', action.icon)
+  }
+  if(action.type === GET_SUGGESTIONS) {
+    return state.set('suggestion', action.suggestion).set('locationData', action.locationData)
+  }
+  if(action.type === CLEAR_SUGGESTIONS) {
+    return state.set('suggestion', [])
   }
   return state
 })

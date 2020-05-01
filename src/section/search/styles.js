@@ -76,3 +76,24 @@ export const ChangeLocation = styled.button`
     outline: none;
   }
 `
+
+export const SuggestTable = styled.table`
+  position: absolute;
+  height: 40px;
+  width: 260px;
+  margin-top: -10px;
+  margin-left: 15px;
+
+`
+
+export const Row = styled.tr`
+  color: black;
+  background-color: #ffffff;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  &.hide{
+    display: none;
+  }
+`
