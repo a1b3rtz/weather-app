@@ -17,7 +17,7 @@ export const Input = styled.input.attrs({
 })`
   font-size: 17px;
   height: 40px;
-  width: 300px;
+  width: 330px;
   border-radius: 20px;
   box-sizing: border-box;
   padding: 0 50px 0 20px;
@@ -25,30 +25,6 @@ export const Input = styled.input.attrs({
   box-shadow: 5px 5px 100px rgba(0, 0, 255, 0.3);
   :focus {
     border: none;
-    outline: none;
-  }
-`
-
-export const SubmitButton = styled.button`
-  margin-left: -35px;
-  height: 70px;
-  width: 70px;
-  border-radius: 35px;
-  border: none;
-  box-sizing: border-box;
-  box-shadow: 5px 5px 50px rgba(0, 0, 255, 0.1);
-  transition: all 0.3s ease-in-out;
-  background-color: #04FCCC;
-  cursor: pointer;
-  :hover {
-    background-color: #20D3AC;
-  }
-  :active {
-    background-color: #0D9D7C;
-    transition: all 0s ease-in-out;
-  }
-  :focus {
-    border: 1px solid #0D9D7C;
     outline: none;
   }
 `
@@ -81,8 +57,7 @@ export const ChangeLocation = styled.button`
 export const SuggestTable = styled.table`
   position: absolute;
   height: 40px;
-  width: 255px;
-  margin-top: -17px;
+  width: 300px;
   margin-left: 15px;
 
 `

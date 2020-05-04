@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import * as _ from 'underscore';
 
 import {
   SearchWrapper,
   FormWrapper,
   Input,
-  SubmitButton,
   ChangeLocation,
   SuggestTable,
   Row
@@ -17,22 +15,22 @@ class Search extends PureComponent {
 
   render() {
     const { inputValue, suggestions, handleInputChange, handleWeatherData, handleSelectLocation } = this.props;
-  
+
     return (
       <SearchWrapper>
         <FormWrapper>
           <Input value={inputValue} onChange={handleInputChange} />
-          <SubmitButton>SEARCH</SubmitButton>
           <SuggestTable className={suggestions ? '' : 'hide'}>
             {
-              suggestions ? 
-                suggestions.map((item, index) => {
-                  return (<tbody key={index}><Row
-                            onClick={() => handleSelectLocation(item)}
-                          ><td>
-                            {item.label.slice(10)}
-                          </td></Row></tbody>)
-                }) : <tbody><tr><td></td></tr></tbody>
+              suggestions ? suggestions.map((item, index) => {
+                return (
+                  <tbody key={index}><Row
+                    onClick={() => handleSelectLocation(item)}
+                  ><td>
+                    {item.label.slice(10)}
+                  </td></Row></tbody>
+                )
+              }) : <tbody><tr><td></td></tr></tbody>
             }
           </SuggestTable>
           <ChangeLocation onClick={handleWeatherData}>Use your location</ChangeLocation>
@@ -64,6 +62,7 @@ const mapDispatchToProps = (dispatch) => ({
 
     const autoCompleteAction = actionCreator.autoComplete(input);
     dispatch(autoCompleteAction);
+
   },
 
   handleWeatherData() {
